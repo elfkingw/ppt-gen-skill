@@ -11,6 +11,26 @@
 
 页面不显示页码。右上角只放可选的 `brand.tagline`，页脚照常保留。效果图在 `previews/` 下，文件名与版式同名。效果图右上角若仍有页码，是更新前的截图；生成时按当前组件，不画页码。
 
+命名骨架 `noesis-aiops`（`examples/noesis-aiops.deck.json`，主题 `noesis-teal`）是「新致新知 Noesis AI · 银行智能运维」的可选用入口：白底、标题 `#0A2240`、强调色 `#00857C`、无装饰、无页码。选用方式见仓库 README 的「新致新知骨架」。页型与版式的对应如下。
+
+| 页 | 参考稿 | `layout` |
+|---|---|---|
+| 1 | 封面（标题 + 右侧轨道） | `cover` |
+| 2 | 目录，四个章节 | `columns` |
+| 3 / 7 / 13 / 17 | 章节分隔 | `section`（`current`） |
+| 4 | 四个痛点 + 底部结论 | `cards-strip`（`monochrome`） |
+| 5 | 关键数字「4小时」 | `section` |
+| 6 / 15 | 方案对比、竞品对比 | `table` |
+| 8 | 定位，左右汇入中枢 | `hub` |
+| 9 | 总体架构 | `custom`（`pages/architecture.js`） |
+| 10 / 14 | 本体三列、自我进化 | `flow3` |
+| 11 | 故障闭环 | `steps` |
+| 12 | 四道防线 | `cards-strip`（`monochrome`） |
+| 16 | 客户案例 + 指标 | `case-kpi` |
+| 18 | 分阶段路线图 | `roadmap` |
+| 19 | 部署与合规 | `columns` |
+| 20 | 收尾 | `closing` |
+
 所有 `icon` / `lineIcon` 字段写 Lucide 图标名，用 `node lib/build.js --icons 关键词` 搜索。
 
 ---
@@ -179,4 +199,4 @@
 | 客户案例 | `case-kpi` |
 | 实施计划 | `roadmap` |
 
-同一版式不要连续使用；整套中单个版式最多出现 3 次（章节页除外）。
+同一版式不要连续使用；整套中单个版式最多出现 3 次（章节页除外）。`noesis-aiops` 骨架按参考稿保留了两次 `cards-strip`、两次 `table`、两次 `flow3`、两次 `columns`，章节页用 `section`。
