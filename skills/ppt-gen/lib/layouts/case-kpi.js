@@ -3,7 +3,7 @@ module.exports = {
   summary: '案例：左侧概况（2～4 张说明卡）+ 右侧 2×2 大数字；数字未确认时写 pending: true',
   render(s, d, k) {
     const th = k.th;
-    k.chrome(s, { title: d.title, suffix: d.suffix, sub: d.sub, page: k.ctx.page, footerNote: d.footerNote });
+    k.chrome(s, { title: d.title, suffix: d.suffix, sub: d.sub, footerNote: d.footerNote });
     const c = d.case;
     k.panel(s, [k.M, 1.4, 5.6, 5.5]);
     k.sectionHead(s, 0.7, 1.6, c.zh, c.en, c.icon);

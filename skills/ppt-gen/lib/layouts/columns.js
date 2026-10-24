@@ -3,7 +3,7 @@ module.exports = {
   summary: '2～5 列编号卡片：徽章 + 标题 + 分隔线 + 圆点要点 + 底注（目录、并列要点、部署清单）',
   render(s, d, k) {
     const th = k.th;
-    k.chrome(s, { title: d.title, suffix: d.suffix, sub: d.sub, page: k.ctx.page });
+    k.chrome(s, { title: d.title, suffix: d.suffix, sub: d.sub });
     const items = d.items, n = items.length, y = 1.75, h = 4.9;
     const cols = k.grid(n, k.M, k.CONTENT_W, 0.3);
     const titleSize = n >= 5 ? 17 : 20;

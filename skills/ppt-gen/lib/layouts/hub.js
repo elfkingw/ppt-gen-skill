@@ -3,7 +3,7 @@ module.exports = {
   summary: '中心辐射：左右各 2～5 张卡片围绕中心圆环，顶部提示、底部结论（定位、生态、数据来源）',
   render(s, d, k) {
     const th = k.th;
-    k.chrome(s, { title: d.title, suffix: d.suffix, sub: d.sub, page: k.ctx.page });
+    k.chrome(s, { title: d.title, suffix: d.suffix, sub: d.sub });
     k.panel(s, [k.M, 1.4, k.CONTENT_W, 5.5]);
     const col = (list, x) => {
       const n = list.length, gap = 0.25, h = Math.min(1.0, (5.0 - (n - 1) * gap) / n);

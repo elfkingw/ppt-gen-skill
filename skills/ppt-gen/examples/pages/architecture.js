@@ -2,7 +2,7 @@
 // (entry → capabilities → highlighted new layer → base), with a legend.
 module.exports = function architecture(s, d, k) {
   const th = k.th;
-  k.chrome(s, { title: d.title, suffix: d.suffix, sub: d.sub, page: k.ctx.page });
+  k.chrome(s, { title: d.title, suffix: d.suffix, sub: d.sub });
   const TOP = 1.38, BOT = 6.94;
 
   // Legend: existing vs new

@@ -3,7 +3,7 @@ module.exports = {
   summary: '结束页：两行主张 + 一句邀请 + 署名，右侧信息卡（联系人或试点信息）',
   render(s, d, k) {
     const th = k.th;
-    k.chrome(s, { big: true, footer: false, page: k.ctx.page });
+    k.chrome(s, { big: true, footer: false });
     const [l1, l2] = d.claim;
     k.text(s, l1, [0.8, 2.3, 8, 0.85], { fontSize: 38, bold: true, color: th.ink, valign: 'middle' });
     if (l2) k.text(s, l2, [0.8, 3.15, 8, 0.85], { fontSize: 38, bold: true, color: th.primary, valign: 'middle' });
