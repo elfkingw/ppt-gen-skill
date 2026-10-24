@@ -33,7 +33,7 @@ node lib/build.js --icons alert        # 搜 Lucide 图标（英文关键词，�
 
 **主题**：按行业和客户选预设（`finance-blue`、`gov-red`、`tech-purple`、`health-teal`、`energy-green`、`business-slate`、`noesis-teal`）；用户给了品牌色就用 `{"primary": "#xxxxxx"}`，配套色自动推导并检查对比度。字体按客户打开 PPT 的环境选，见 [reference/fonts.md](reference/fonts.md)。
 
-要「新致新知 Noesis AI / 银行智能运维」这份骨架时，直接用预设 `noesis-teal`（白底、藏青标题 `#0A2240`、青绿强调 `#00857C`、无装饰），页序改 `examples/noesis-aiops.deck.json`。右上角不放页码。`node lib/build.js --templates` 可列出命名骨架。
+要「新致新知 Noesis AI / 银行智能运维」这份骨架时，直接用预设 `noesis-teal`（白底、藏青标题 `#0A2240`、青绿强调 `#00857C`、无装饰），页序改 `examples/noesis-aiops.deck.json`。同一主题的 AICoding 企业方案示例是 `examples/noesis-aicoding.deck.json`。右上角不放页码。`node lib/build.js --templates` 可列出命名骨架。
 
 **排版计划**：一张表，每页一行：
 
@@ -60,7 +60,7 @@ node lib/build.js --icons alert        # 搜 Lucide 图标（英文关键词，�
 }
 ```
 
-- 字段和字数上限见 [reference/layouts.md](reference/layouts.md)；完整示例：`examples/aiops.deck.json`（20 页银行智能运维方案，`finance-blue`）。同一页序的新致新知骨架：`examples/noesis-aiops.deck.json`（`noesis-teal`）。
+- 字段和字数上限见 [reference/layouts.md](reference/layouts.md)；完整示例：`examples/aiops.deck.json`（20 页银行智能运维方案，`finance-blue`）。同一页序的新致新知骨架：`examples/noesis-aiops.deck.json`（`noesis-teal`）。AICoding 企业方案：`examples/noesis-aicoding.deck.json`。
 - `decor`：`skyline`（城市剪影）、`grid`（点阵）、`wave`（波浪）、`none`；不写就用预设的默认值。
 - `tagline`、`footer` 按内容现写，与主题无关的不要照抄示例。
 - 自由页：`{"layout": "custom", "script": "pages/xxx.js", ...}`，写法见 [reference/custom-pages.md](reference/custom-pages.md)。

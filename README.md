@@ -22,6 +22,7 @@ cd skills/ppt-gen
 scripts/setup.sh
 npm run example          # 生成 out/aiops.pptx（finance-blue）
 npm run example:noesis   # 生成 out/noesis-aiops.pptx（新致新知骨架 noesis-teal）
+npm run example:aicoding # 生成 out/noesis-aicoding.pptx（AICoding 企业方案）
 ```
 
 渲染前几页做视觉检查：
@@ -128,6 +129,8 @@ node lib/build.js examples/noesis-aiops.deck.json -o out/noesis-aiops.pptx
 
 `examples/noesis-aiops.deck.json` 的页序与版式对齐参考稿：封面、目录、四个章节分隔、痛点卡片、趋势数字、对比表、定位、架构自由页、本体三列、故障闭环、受控执行、自我进化、竞品表、案例、路线图、部署清单、收尾。右上角不画页码。品牌写「新致新知 Noesis AI」。痛点卡和防线卡使用 `monochrome: true`，结论色统一为主色青绿。
 
+同一主题的内容稿 `examples/noesis-aicoding.deck.json`（`--templates` 中的 `noesis-aicoding`）按这套页序讲企业 AICoding：痛点、趋势与工具瓶颈、定位、架构、需求到发布的受控闭环、知识与规范、定性对比、试点口径、路线图、部署合规、收尾。没有出处的指标写「待确认」。
+
 pptx 不嵌入字体，按客户打开文稿的环境选 `theme.font`，说明见 [skills/ppt-gen/reference/fonts.md](skills/ppt-gen/reference/fonts.md)。默认面向 Windows 上的 PowerPoint / WPS 时用「微软雅黑」。
 
 ## 目录
@@ -141,6 +144,7 @@ skills/ppt-gen/
   lib/parts.js             卡片、徽章、图标等组件
   examples/aiops.deck.json 完整示例（finance-blue）
   examples/noesis-aiops.deck.json  新致新知 Noesis AI 骨架（noesis-teal）
+  examples/noesis-aicoding.deck.json  AICoding 企业方案（同一主题）
   examples/pages/          自由页示例
   reference/               版式、自由页、字体说明与预览图
   scripts/setup.sh         从 vendor 解压依赖
