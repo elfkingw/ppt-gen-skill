@@ -12,6 +12,7 @@
     "example": "node lib/build.js examples/aiops.deck.json -o out/aiops.pptx --strict",
     "example:noesis": "node lib/build.js examples/noesis-aiops.deck.json -o out/noesis-aiops.pptx --strict",
     "example:aicoding": "node lib/build.js examples/noesis-aicoding.deck.json -o out/noesis-aicoding.pptx --strict",
+    "example:bank-ai-landing": "node lib/build.js examples/noesis-bank-ai-landing.deck.json -o out/noesis-bank-ai-landing.pptx --strict",
     "render:example": "scripts/render.sh examples/aiops.deck.json out/renders"
   },
   "dependencies": {

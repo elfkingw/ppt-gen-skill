@@ -23,6 +23,7 @@ scripts/setup.sh
 npm run example          # 生成 out/aiops.pptx（finance-blue）
 npm run example:noesis   # 生成 out/noesis-aiops.pptx（新致新知骨架 noesis-teal）
 npm run example:aicoding # 生成 out/noesis-aicoding.pptx（AICoding 企业方案）
+npm run example:bank-ai-landing # 生成 out/noesis-bank-ai-landing.pptx（银行 AI 落地）
 ```
 
 渲染前几页做视觉检查：
@@ -131,6 +132,8 @@ node lib/build.js examples/noesis-aiops.deck.json -o out/noesis-aiops.pptx
 
 同一主题的内容稿 `examples/noesis-aicoding.deck.json`（`--templates` 中的 `noesis-aicoding`）按这套页序改写《AICoding 企业级智能研发方案》的大纲：四道坎、趋势、同业、研究证据、定位、架构、需求到投产、规格与嵌入、岗位、交付参照、路线图、监管对照、合作方式、收尾。稿中已有出处的数字保留并在备注写来源；本方案自己的效果指标写「待确认」。右上角不画页码。
 
+`examples/noesis-bank-ai-landing.deck.json`（`--templates` 中的 `noesis-bank-ai-landing`）用同一主题讲银行 AI 落地：政策与采购变化、四处卡点、开源龙虾与内网、场景包与驻场、2+1、东亚运维参照、金发〔2026〕8 号对照。数字以《2027 银行 AI 落地需求调研与新致突破规划》（2026-10-23）为准；对不上的说法只留在备注。
+
 pptx 不嵌入字体，按客户打开文稿的环境选 `theme.font`，说明见 [skills/ppt-gen/reference/fonts.md](skills/ppt-gen/reference/fonts.md)。默认面向 Windows 上的 PowerPoint / WPS 时用「微软雅黑」。
 
 ## 目录
@@ -145,6 +148,7 @@ skills/ppt-gen/
   examples/aiops.deck.json 完整示例（finance-blue）
   examples/noesis-aiops.deck.json  新致新知 Noesis AI 骨架（noesis-teal）
   examples/noesis-aicoding.deck.json  AICoding 企业方案（同一主题）
+  examples/noesis-bank-ai-landing.deck.json  银行 AI 落地（同一主题）
   examples/pages/          自由页示例
   reference/               版式、自由页、字体说明与预览图
   scripts/setup.sh         从 vendor 解压依赖
