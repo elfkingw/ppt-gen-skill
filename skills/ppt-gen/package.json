@@ -1,0 +1,19 @@
+{
+  "name": "solution-deck",
+  "version": "1.0.0",
+  "private": true,
+  "description": "方案类 PPT 生成：deck.json → 精排版可编辑 pptx",
+  "main": "lib/build.js",
+  "type": "commonjs",
+  "scripts": {
+    "setup": "scripts/setup.sh",
+    "vendor": "npm install && COPYFILE_DISABLE=1 tar --no-xattrs -czf vendor/node_modules.tar.gz --exclude=.DS_Store --exclude=node_modules/lucide-static/font --exclude=node_modules/lucide-static/dist --exclude=node_modules/lucide-static/icons --exclude=node_modules/lucide-static/sprite.svg node_modules",
+    "build": "node lib/build.js",
+    "example": "node lib/build.js examples/aiops.deck.json -o out/aiops.pptx --strict",
+    "render:example": "scripts/render.sh examples/aiops.deck.json out/renders"
+  },
+  "dependencies": {
+    "lucide-static": "^1.61.0",
+    "pptxgenjs": "^3.12.0"
+  }
+}
