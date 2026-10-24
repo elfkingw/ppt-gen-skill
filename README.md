@@ -129,7 +129,7 @@ node lib/build.js examples/noesis-aiops.deck.json -o out/noesis-aiops.pptx
 
 `examples/noesis-aiops.deck.json` 的页序与版式对齐参考稿：封面、目录、四个章节分隔、痛点卡片、趋势数字、对比表、定位、架构自由页、本体三列、故障闭环、受控执行、自我进化、竞品表、案例、路线图、部署清单、收尾。右上角不画页码。品牌写「新致新知 Noesis AI」。痛点卡和防线卡使用 `monochrome: true`，结论色统一为主色青绿。
 
-同一主题的内容稿 `examples/noesis-aicoding.deck.json`（`--templates` 中的 `noesis-aicoding`）按这套页序讲企业 AICoding：痛点、趋势与工具瓶颈、定位、架构、需求到发布的受控闭环、知识与规范、定性对比、试点口径、路线图、部署合规、收尾。没有出处的指标写「待确认」。
+同一主题的内容稿 `examples/noesis-aicoding.deck.json`（`--templates` 中的 `noesis-aicoding`）按这套页序改写《AICoding 企业级智能研发方案》的大纲：四道坎、趋势、同业、研究证据、定位、架构、需求到投产、规格与嵌入、岗位、交付参照、路线图、监管对照、合作方式、收尾。稿中已有出处的数字保留并在备注写来源；本方案自己的效果指标写「待确认」。右上角不画页码。
 
 pptx 不嵌入字体，按客户打开文稿的环境选 `theme.font`，说明见 [skills/ppt-gen/reference/fonts.md](skills/ppt-gen/reference/fonts.md)。默认面向 Windows 上的 PowerPoint / WPS 时用「微软雅黑」。
 
