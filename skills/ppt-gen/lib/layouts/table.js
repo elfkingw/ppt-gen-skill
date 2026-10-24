@@ -3,7 +3,7 @@ module.exports = {
   summary: '对比表：主色表头、高亮「本方案」列、底部结论条和注释（竞品对比、方案对比）',
   render(s, d, k) {
     const th = k.th;
-    k.chrome(s, { title: d.title, suffix: d.suffix, sub: d.sub, page: k.ctx.page });
+    k.chrome(s, { title: d.title, suffix: d.suffix, sub: d.sub });
     const cols = d.columns.length, hi = d.highlight === undefined ? cols - 1 : d.highlight;
     const size = d.fontSize || (cols >= 6 ? 10.5 : 12);
     const base = { fontFace: th.font, lang: 'zh-CN', fontSize: size, valign: 'middle' };

@@ -133,7 +133,7 @@ function makeKit(pptx, th, ctx) {
     }
   };
 
-  // Page chrome: two-part title, subtitle, tagline rule, page chip, footers.
+  // Page chrome: two-part title, subtitle, tagline rule, footers. No page number.
   k.chrome = (s, o) => {
     o = o || {};
     k.canvas(s, o.big);
@@ -148,10 +148,6 @@ function makeKit(pptx, th, ctx) {
       k.hline(s, 9.05, 0.555, 0.35, th.primarySoft, 1.25);
       k.hline(s, 9.4, 0.555, 0.6, th.primary, 1.25);
       k.text(s, brand.tagline, [10.1, 0.43, 2.15, 0.25], { fontSize: 9, color: th.muted, charSpacing: 1.5, valign: 'middle' });
-    }
-    if (o.page) {
-      k.rr(s, [12.3, 0.37, 0.6, 0.36], th.tint2, { r: 0.3 });
-      k.text(s, o.page + '/' + ctx.total, [12.3, 0.37, 0.6, 0.36], { fontSize: 11, bold: true, color: th.primaryDark, align: 'center', valign: 'middle', fit: false });
     }
     if (o.footer !== false) {
       const f = brand.footer || [];

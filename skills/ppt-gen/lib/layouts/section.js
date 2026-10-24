@@ -3,7 +3,7 @@ module.exports = {
   summary: '左侧超大数字/词 + 标题 + 说明（+ 来源），右侧 2～4 条编号条目；设 current 即为章节分隔页',
   render(s, d, k) {
     const th = k.th;
-    k.chrome(s, { page: k.ctx.page });
+    k.chrome(s);
     const big = String(d.number);
     const bigSize = d.numberSize || (big.length <= 2 ? 96 : 88);
     k.text(s, big, [0.9, 1.55, 6.0, 1.55], { fontSize: bigSize, bold: true, color: th.primary, valign: 'middle' });

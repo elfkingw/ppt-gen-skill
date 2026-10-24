@@ -3,7 +3,7 @@ module.exports = {
   summary: '分区标题 + 3～4 张图标卡（标题/说明/彩色结论）+ 底部条带（3 个要点或一句结论）',
   render(s, d, k) {
     const th = k.th;
-    k.chrome(s, { title: d.title, suffix: d.suffix, sub: d.sub, page: k.ctx.page });
+    k.chrome(s, { title: d.title, suffix: d.suffix, sub: d.sub });
     const head = d.head || {};
     k.panel(s, [k.M, 1.4, k.CONTENT_W, 4.05]);
     k.sectionHead(s, 0.7, 1.6, head.zh, head.en, head.icon);

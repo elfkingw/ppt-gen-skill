@@ -5,7 +5,7 @@ module.exports = {
   summary: '路线图：2～4 个阶段箭头（颜色由浅到深）+ 每阶段一张卡（编号/标题/图标要点）',
   render(s, d, k) {
     const th = k.th;
-    k.chrome(s, { title: d.title, suffix: d.suffix, sub: d.sub, page: k.ctx.page });
+    k.chrome(s, { title: d.title, suffix: d.suffix, sub: d.sub });
     const ph = d.phases, n = ph.length, cols = k.grid(n, k.M, k.CONTENT_W, 0.3);
     ph.forEach((p, i) => {
       const { x, w } = cols[i];

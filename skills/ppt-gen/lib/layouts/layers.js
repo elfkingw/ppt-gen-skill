@@ -3,7 +3,7 @@ module.exports = {
   summary: '分层架构：3～5 层，每层 3～6 个模块，可高亮一层，右侧可选竖向保障栏',
   render(s, d, k) {
     const th = k.th;
-    k.chrome(s, { title: d.title, suffix: d.suffix, sub: d.sub, page: k.ctx.page });
+    k.chrome(s, { title: d.title, suffix: d.suffix, sub: d.sub });
     const layers = d.layers, n = layers.length, side = d.side;
     const W = side ? 10.6 : k.CONTENT_W, gap = 0.16, lh = (5.45 - (n - 1) * gap) / n;
     layers.forEach((l, i) => {

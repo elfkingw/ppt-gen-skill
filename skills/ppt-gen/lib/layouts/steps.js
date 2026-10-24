@@ -3,7 +3,7 @@ module.exports = {
   summary: '3～5 步流程卡（编号/标题/大图标/要点，箭头相连）+ 底部 2～4 个原则卡',
   render(s, d, k) {
     const th = k.th;
-    k.chrome(s, { title: d.title, suffix: d.suffix, sub: d.sub, page: k.ctx.page });
+    k.chrome(s, { title: d.title, suffix: d.suffix, sub: d.sub });
     const steps = d.steps, n = steps.length, cols = k.grid(n, k.M, k.CONTENT_W, 0.32);
     const hasP = d.principles && d.principles.length;
     const y = 1.45, h = hasP ? 3.75 : 5.3;

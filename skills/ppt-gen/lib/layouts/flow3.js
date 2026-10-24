@@ -3,7 +3,7 @@ module.exports = {
   summary: '输入 → 引擎 → 输出 三栏：左列表、中间 4 卡围绕核心 + 主结论条 + 备注、右侧结论卡',
   render(s, d, k) {
     const th = k.th;
-    k.chrome(s, { title: d.title, suffix: d.suffix, sub: d.sub, page: k.ctx.page });
+    k.chrome(s, { title: d.title, suffix: d.suffix, sub: d.sub });
     const [inp, eng, out] = d.columns;
     const Y = 1.4, H = 5.5, LX = k.M, LW = 3.3, CX = 4.05, CW = 5.2, RX = 9.58, RW = 3.3;
     [[LX, LW], [CX, CW], [RX, RW]].forEach(([x, w]) => k.panel(s, [x, Y, w, H]));

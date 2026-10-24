@@ -8,7 +8,7 @@
 // pages/my-page.js —— 在 deck.json 里写 { "layout": "custom", "script": "pages/my-page.js", ...任意字段 }
 module.exports = function (s, d, k) {
   const th = k.th;
-  k.chrome(s, { title: d.title, suffix: d.suffix, sub: d.sub, page: k.ctx.page });
+  k.chrome(s, { title: d.title, suffix: d.suffix, sub: d.sub });
   // ...用 k.* 画内容，d 就是 deck.json 里这一页的对象
 };
 ```
@@ -20,6 +20,7 @@ module.exports = function (s, d, k) {
 - 画布 13.333 × 7.5 英寸，单位一律是英寸，`box = [x, y, w, h]`。
 - 左右边距 `k.M = 0.45`，内容宽 `k.CONTENT_W = 12.43`。
 - 标题区占到 y = 1.25；内容区 y ∈ [1.4, 6.9]；页脚在 y = 7.1。
+- `k.chrome` 绘制标题、副标题、右上角 `brand.tagline` 和页脚，不绘制页码。自由页不要再在右上角补页码。
 - 等分列：`k.grid(n, x, totalW, gap)` 返回 `[{x, w}, …]`，所有并排元素都用它算，不要手算。
 
 ## 组件（`k.*`）
