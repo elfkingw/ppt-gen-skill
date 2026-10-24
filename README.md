@@ -20,7 +20,8 @@
 ```bash
 cd skills/ppt-gen
 scripts/setup.sh
-npm run example          # 生成 out/aiops.pptx
+npm run example          # 生成 out/aiops.pptx（finance-blue）
+npm run example:noesis   # 生成 out/noesis-aiops.pptx（新致新知骨架 noesis-teal）
 ```
 
 渲染前几页做视觉检查：
@@ -66,6 +67,7 @@ node lib/build.js /path/to/deck.json -o out/deck.pptx
 ```bash
 node lib/build.js --layouts          # 版式清单
 node lib/build.js --themes           # 预设主题
+node lib/build.js --templates        # 命名骨架（主题 + 页序）
 node lib/build.js --icons alert      # 按英文关键词搜 Lucide 图标
 ```
 
@@ -98,7 +100,7 @@ node lib/build.js --icons alert      # 按英文关键词搜 Lucide 图标
 
 ## 主题
 
-`theme.preset` 六种预设，主色和装饰可以覆盖。用户给了品牌色时写 `{"primary": "#1E5BE6"}`，配套色会自动推导并检查对比度。
+`theme.preset` 七种预设，主色和装饰可以覆盖。用户给了品牌色时写 `{"primary": "#1E5BE6"}`，配套色会自动推导并检查对比度。`noesis-teal` 额外锁定藏青标题、灰色正文和白底，避免主色把中性色染成深青。
 
 | 预设 | 主色 | 默认装饰 | 场景 |
 |---|---|---|---|
@@ -108,8 +110,23 @@ node lib/build.js --icons alert      # 按英文关键词搜 Lucide 图标
 | `health-teal` | `#0B8F86` | `wave` | 医疗、医药、健康、环保 |
 | `energy-green` | `#1E8E4E` | `skyline` | 能源、电力、制造、双碳 |
 | `business-slate` | `#2F4A6D` | `grid` | 咨询、通用商务、对外汇报 |
+| `noesis-teal` | `#00857C` | `none` | 新致新知 Noesis AI：白底、藏青标题、青绿强调 |
 
 `decor` 可选 `skyline`（城市剪影）、`grid`（点阵）、`wave`（波浪）、`none`。
+
+### 新致新知骨架
+
+用户指定「这份骨架 / 新致新知 Noesis AI / 银行智能运维」时，用命名模板 `noesis-aiops`，不要从 `finance-blue` 另起一稿：
+
+```json
+"theme": { "preset": "noesis-teal", "font": "微软雅黑", "decor": "none" }
+```
+
+```bash
+node lib/build.js examples/noesis-aiops.deck.json -o out/noesis-aiops.pptx
+```
+
+`examples/noesis-aiops.deck.json` 的页序与版式对齐参考稿：封面、目录、四个章节分隔、痛点卡片、趋势数字、对比表、定位、架构自由页、本体三列、故障闭环、受控执行、自我进化、竞品表、案例、路线图、部署清单、收尾。右上角不画页码。品牌写「新致新知 Noesis AI」。痛点卡和防线卡使用 `monochrome: true`，结论色统一为主色青绿。
 
 pptx 不嵌入字体，按客户打开文稿的环境选 `theme.font`，说明见 [skills/ppt-gen/reference/fonts.md](skills/ppt-gen/reference/fonts.md)。默认面向 Windows 上的 PowerPoint / WPS 时用「微软雅黑」。
 
@@ -122,7 +139,8 @@ skills/ppt-gen/
   lib/layouts/             版式
   lib/theme.js             预设主题与配色
   lib/parts.js             卡片、徽章、图标等组件
-  examples/aiops.deck.json 完整示例
+  examples/aiops.deck.json 完整示例（finance-blue）
+  examples/noesis-aiops.deck.json  新致新知 Noesis AI 骨架（noesis-teal）
   examples/pages/          自由页示例
   reference/               版式、自由页、字体说明与预览图
   scripts/setup.sh         从 vendor 解压依赖

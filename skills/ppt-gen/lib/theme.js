@@ -7,7 +7,26 @@ const PRESETS = {
   'tech-purple': { primary: '5B4BDB', decor: 'grid', label: '科技紫：AI、大模型、SaaS、研发工具' },
   'health-teal': { primary: '0B8F86', decor: 'wave', label: '医疗青：医疗、医药、健康、环保' },
   'energy-green': { primary: '1E8E4E', decor: 'skyline', label: '能源绿：能源、电力、制造、双碳' },
-  'business-slate': { primary: '2F4A6D', decor: 'grid', label: '商务墨蓝：咨询、通用商务、对外汇报' }
+  'business-slate': { primary: '2F4A6D', decor: 'grid', label: '商务墨蓝：咨询、通用商务、对外汇报' },
+  // Approved Noesis skeleton: teal accent on white, navy titles, gray body.
+  // `lock` keeps those neutrals from being hue-shifted into dark teal.
+  'noesis-teal': {
+    primary: '00857C',
+    decor: 'none',
+    label: '新致新知青绿：白底、藏青标题、青绿强调（新致新知 Noesis AI / 银行智能运维骨架）',
+    lock: {
+      ink: '0A2240',
+      sub: '4B5563',
+      body: '4B5563',
+      muted: '6B7280',
+      line: 'C7CDD6',
+      panelLine: 'C7CDD6',
+      bg: 'FFFFFF',
+      tint: 'EEF7F6',
+      tint2: 'D6EBEA',
+      danger: 'B42318'
+    }
+  }
 };
 
 const clean = (c) => String(c).replace('#', '').toUpperCase();
@@ -44,11 +63,12 @@ function ensureOnWhite(c, ratio) {
 
 function deriveTheme(input) {
   const opt = typeof input === 'string' ? { primary: input } : Object.assign({}, input);
+  let preset;
   if (opt.preset) {
-    const p = PRESETS[opt.preset];
-    if (!p) throw new Error('Unknown theme preset "' + opt.preset + '". Available: ' + Object.keys(PRESETS).join(', '));
-    opt.primary = opt.primary || p.primary;
-    opt.decor = opt.decor || p.decor;
+    preset = PRESETS[opt.preset];
+    if (!preset) throw new Error('Unknown theme preset "' + opt.preset + '". Available: ' + Object.keys(PRESETS).join(', '));
+    opt.primary = opt.primary || preset.primary;
+    opt.decor = opt.decor || preset.decor;
   }
   const warnings = [];
   const raw = clean(opt.primary || PRESETS['finance-blue'].primary);
@@ -87,6 +107,9 @@ function deriveTheme(input) {
     decor: opt.decor || 'none',
     warnings
   };
+  if (preset && preset.lock) {
+    Object.entries(preset.lock).forEach(([key, value]) => { t[key] = clean(value); });
+  }
   if (contrast(t.primary, t.bg) < 3) warnings.push('主色在背景上的对比度低于 3，大字标题可能不清楚');
   return t;
 }

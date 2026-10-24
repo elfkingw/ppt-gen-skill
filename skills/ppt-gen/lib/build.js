@@ -3,6 +3,7 @@
 //   node lib/build.js deck.json [-o out.pptx] [--only 3,5-7] [--strict]
 //   node lib/build.js --layouts        list layouts
 //   node lib/build.js --themes         list theme presets
+//   node lib/build.js --templates      list named skeletons (examples/*.deck.json with meta.template)
 //   node lib/build.js --icons kw ...   search Lucide icons by keyword
 const fs = require('fs');
 const path = require('path');
@@ -107,6 +108,23 @@ if (require.main === module) {
     Object.entries(PRESETS).forEach(([n, p]) => console.log(n.padEnd(16) + '#' + p.primary + '  decor=' + p.decor.padEnd(8) + p.label));
     process.exit(0);
   }
+  if (argv.includes('--templates')) {
+    const dir = path.join(__dirname, '../examples');
+    const files = fs.readdirSync(dir).filter((f) => f.endsWith('.deck.json')).sort();
+    let n = 0;
+    for (const f of files) {
+      const deck = JSON.parse(fs.readFileSync(path.join(dir, f), 'utf8'));
+      const id = deck.meta && deck.meta.template;
+      if (!id) continue;
+      n += 1;
+      const preset = (deck.theme && deck.theme.preset) || '(custom)';
+      const label = (deck.meta && deck.meta.templateLabel) || (deck.meta && deck.meta.title) || '';
+      console.log(id.padEnd(16) + 'theme=' + String(preset).padEnd(14) + 'examples/' + f);
+      if (label) console.log(''.padEnd(16) + label);
+    }
+    if (!n) console.log('没有命名骨架。在 examples/*.deck.json 的 meta.template 里写模板名。');
+    process.exit(0);
+  }
   if (argv.includes('--icons')) {
     const words = argv.slice(argv.indexOf('--icons') + 1).filter((a) => !a.startsWith('-'));
     if (!words.length) {
@@ -120,7 +138,7 @@ if (require.main === module) {
   }
   const val = (flag) => { const i = argv.indexOf(flag); return i >= 0 ? argv[i + 1] : undefined; };
   const deckPath = argv.find((a, i) => !a.startsWith('-') && !['-o', '--only'].includes(argv[i - 1]));
-  if (!deckPath) { console.error('用法：node lib/build.js deck.json [-o out.pptx] [--only 3,5-7] [--strict]'); process.exit(2); }
+  if (!deckPath) { console.error('用法：node lib/build.js deck.json [-o out.pptx] [--only 3,5-7] [--strict]'); console.error('      node lib/build.js --layouts | --themes | --templates | --icons 关键词'); process.exit(2); }
   build(deckPath, { out: val('-o'), only: val('--only') }).then((r) => {
     console.log('已生成 ' + r.out + '（主色 #' + r.theme.primary + '，字体 ' + r.theme.font + '，装饰 ' + r.theme.decor + '）');
     if (r.warnings.length) { console.log('\n需要检查的问题（' + r.warnings.length + '）：'); r.warnings.forEach((w) => console.log('  - ' + w)); }
